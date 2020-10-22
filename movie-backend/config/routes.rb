@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'movies#index'
   resources :user_favorite_movies
   resources :movies 
   resources :users

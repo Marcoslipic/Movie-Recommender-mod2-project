@@ -1,6 +1,7 @@
 const form = document.querySelector('form')
 const input = document.querySelector('#searchTerm')
 const resultsSection = document.querySelector('#results')
+const watchLaterSection = document.querySelector('#watch-later')
 const apikey = "api_key=e6c80bcc6c22dfddc5cc43795406ed56"
 const genreURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=e6c80bcc6c22dfddc5cc43795406ed56&language=en-US"
 const baseURL = `https://api.themoviedb.org/3/discover/movie?${apikey}`
@@ -38,9 +39,17 @@ function getName(result){
           <form>
             <input type="button" onclick="getMovie()" value="Next" />
           </form>
+          <button data-id="${randomRes['title']} type="button" class="btn btn-danger watch-later-button">Watch Later</button>
         </div>
       </div>
     `
+    const watchLaterButton = document.querySelector('.watch-later-button');
+    watchLaterButton.addEventListener('click', (event) => {
+      const { id } = watchLaterButton.dataset;
+      watchLaterSection.innerHTML = watchLaterSection.innerHTML +  `<div class="card">
+      <img src="${imgURL}${randomRes["poster_path"]}" class="card-img-top" alt="${randomRes["title"]}">
+    </div>`
+    })
   }
 
   function getMovie(){
