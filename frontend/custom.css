@@ -13,3 +13,8 @@ input{
 label{
   margin-left: 47.5%;
 }
+
+.btn-primary{
+  margin-left: 37.5%;
+  width: 25%
+}

@@ -32,14 +32,16 @@ function getName(result){
     const randomRes = data[Math.floor (Math.random() * data.length)]
     resultsSection.innerHTML =  `
       <div class="card">
-        <img src="${imgURL}${randomRes["poster_path"]}" class="card-img-top" alt="${randomRes["title"]}">
+        <img src="${imgURL}${randomRes["poster_path"]}" class="card-img-top" alt="${randomRes["title"]}"
+        style="width: 33%;margin-left: 33%">
         <div class="card-body">
           <h5 class="card-title">${randomRes["title"]}</h5>
           <p class="card-text">${randomRes["overview"]}</p>
           <form>
-            <input type="button" onclick="getMovie()" value="Next" />
+            <input type="button" onclick="getMovie()" value="Next" style="margin-left: 45%"/>
           </form>
-          <button data-id="${randomRes['title']} type="button" class="btn btn-danger watch-later-button">Watch Later</button>
+          <button data-id="${randomRes['title']} type="button" class="btn btn-danger watch-later-button"
+          style="margin-left: 41.3%">Watch Later</button>
         </div>
       </div>
     `
