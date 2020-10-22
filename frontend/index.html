@@ -6,6 +6,7 @@
   <title>Movies</title>
   <script defer src="app.js"></script>
   <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.css">
+  <link rel="stylesheet" href="custom.css">
 </head>
 <body>
   <header>
@@ -14,11 +15,16 @@
     </nav>
   </header>
   <main id="container">
-      <form>
+      <form class=>
         <fieldset class="form group">
         <label for="searchTerm">Search</label>
-          <input type="text" class="form-control" id="searchTerm" placeholder="Enter Movie Here">          
+          <input type="text" class="form-control" id="searchTerm" 
+          placeholder="Enter Movie Here" style="margin-left: 25%">          
         </fieldset>
+        <fieldset>
+        <select name="genres" id="genreDrop" style="margin-left: 25%"></select>
+        <select name="year" id="yearDrop"></select>
+      </fieldset>
         <button type="submit" class="btn btn-primary">GO</button>
       </form>
       <section class="mt-2" id="results">

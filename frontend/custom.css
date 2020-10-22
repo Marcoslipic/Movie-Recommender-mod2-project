@@ -1,0 +1,15 @@
+select{
+  width: 25%
+}
+
+.form-control{
+  width: 50%
+}
+
+input{
+  text-align: center;
+}
+
+label{
+  margin-left: 47.5%;
+}
