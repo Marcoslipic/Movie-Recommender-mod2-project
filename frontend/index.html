@@ -18,16 +18,37 @@
   <main id="container">
       <form class=>
         <fieldset class="form group">
-        <label for="searchTerm"></label>
-          <input type="text" class="form-control" id="searchTerm" 
-          placeholder="Keyword Search Here" style="margin-left: 25%">          
-          <select name="genres" id="genreDrop" style="margin-left: 25%"></select>
-          <select name="year" id="yearDrop">
+        <label for="searchTerm">Search</label>
+          <input type="text" class="form-control" id="keyword"
+          placeholder="Enter Movie Here" style="margin-left: 25%">   
+          <!-- <select name="searchTerm" id="searchTerms" style="margin-left: 37%"> -->
+          </select>       
         </fieldset>
         <fieldset>
+          <select name="genres" id="genre" style="margin-left: 25%" type='change'>
+            <option value="28">Action</option>
+            <option value="18">Drama</option>
+            <option value="14">Fantasy</option>
+            <option value="36">History</option>
+            <option value="27">Horror</option>
+            <option value="9648">Mystery</option>
+            <option value="10749">Romance</option>
+            <option value="12">Adventure</option>
+            <option value="16">Animation</option>
+            <option value="35">Comedy</option>
+            <option value="80">Crime</option>
+            <option value="99">Documentary</option>
+            <option value="10751">Family</option>
+            <option value="10402">Music</option>
+            <option value="878">Science Fiction</option>
+            <option value="10770">TV Movie</option>
+            <option value="53">Thriller</option>
+            <option value="10752">War</option>
+            <option value="37">Thriller</option>
+        </select>
+        <select name="year" id="yearDrop">
           <script>
             let dateDropdown = document.getElementById('yearDrop'); 
-                 
             let currentYear = new Date().getFullYear();    
             let earliestYear = 1913;     
             while (currentYear >= earliestYear) {      
@@ -47,9 +68,9 @@
           
         </section>
         <section class="mt-2 col-3 row">
-          <h3>Watch Later</h3>
+          <h3 style='margin-left: 7rem;'>Watch Later</h3>
           <section id="watch-later">
-            <small>You have no movies queued up.</small>
+            <!-- <small style="margin-left: 6rem;">You have no movies queued up.</small> -->
           </section>
         </section>
       </section>
