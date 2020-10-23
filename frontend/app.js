@@ -1,37 +1,63 @@
 const form = document.querySelector('form')
-const input = document.querySelector('#searchTerm')
+const genre = document.getElementsByName('genres')
+const year = document.getElementsByName('year')
+let genreInput = document.querySelector('#genre')
+const yearInput = document.querySelector('#yearDrop')
+const keywordInput = document.querySelector('#keyword')
 const resultsSection = document.querySelector('#results')
 const watchLaterSection = document.querySelector('#watch-later')
 const apikey = "api_key=e6c80bcc6c22dfddc5cc43795406ed56"
 const genreURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=e6c80bcc6c22dfddc5cc43795406ed56&language=en-US"
 const baseURL = `https://api.themoviedb.org/3/discover/movie?${apikey}`
 const imgURL = `https://image.tmdb.org/t/p/w500`
-let genreInput = "&with_genres="
+let genre_Input = "&with_genres="
 let searchURL = ""
-let yearInput = "&year="
+let year_Input = "&year="
+let keyword_Input = "&with_keywords="
 
 form.addEventListener('submit', formSubmitted)
 
+// genre.addEventListener('change', genreChanged);
+// year.addEventListener('change', yearChanged);
+
+// function genreChanged(event) {
+//   genreInput.value 
+// }
+
+// function yearChanged(event) {
+
+// }
+
+
 function formSubmitted(event){
   event.preventDefault()
-  const searchTerm = input.value
-  fetch(genreURL)
-    .then(response => response.json())
-    .then(data => getName(data["genres"]))  
+  console.log(genreInput.value);
+  // console.log(event)
+  searchURL = baseURL + `${genre_Input}${genreInput.value}${year_Input}${yearInput.value}${keyword_Input}${keywordInput.value}`
+  console.log(searchURL);
+  getMovie()
+
+    // fetch(genreURL)
+    //   .then(response => response.json())
+    //   .then(data => getName(data["genres"])) 
 }
 
-function getName(result){
-  const searchGenre = result.find(genre => {
-    return genre.name === input.value
-  })
-  yearInput = `${yearInput}${input.value}`
-  genreInput = `${genreInput}${searchGenre.id}`
-  searchURL = baseURL + yearInput + genreInput
-  getMovie()
-}
+// function getName(result){
+//   console.log(genreInput.value);
+//   const searchGenre = result.find(genre => {
+//     return genre.name === genreInput.value
+//   })
+//     year_Input = `${year_Input}${yearInput.value}`
+//     genre_Input = `${genre_Input}${searchGenre.id}`
+//   searchURL = baseURL + year_Input + genre_Input
+//   console.log(searchURL);
+//   getMovie()
+// }
 
   function renderInfo(data){
-    const randomRes = data[Math.floor (Math.random() * data.length)]
+    let randomRes = data[0];
+    randomRes = data[Math.floor (Math.random() * data.length)]
+    resultsSection.innerHTML = ''; 
     resultsSection.innerHTML =  `
       <div class="card">
         <img src="${imgURL}${randomRes["poster_path"]}" class="card-img-top" alt="${randomRes["title"]}"
