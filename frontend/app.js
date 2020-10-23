@@ -10,10 +10,9 @@ const apikey = "api_key=e6c80bcc6c22dfddc5cc43795406ed56"
 const genreURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=e6c80bcc6c22dfddc5cc43795406ed56&language=en-US"
 const baseURL = `https://api.themoviedb.org/3/discover/movie?${apikey}`
 const imgURL = `https://image.tmdb.org/t/p/w500`
-let genre_Input = "&with_genres="
-let searchURL = ""
-let year_Input = "&year="
-let keyword_Input = "&with_keywords="
+let genreInput = "&with_genres="
+let yearInput = "&primary_release_year="
+let keyInput = "&with_keywords="
 
 form.addEventListener('submit', formSubmitted)
 
@@ -87,5 +86,15 @@ function formSubmitted(event){
       .then(result => result.json())
       .then(data => renderInfo(data["results"]))
   }
+
+  // function getYears(){
+  //   var years = document.getElementById('yearDrop')
+  //   for (var i = 2020; i >= 1913; i--){
+  //     var option = document.createElement('option')
+  //     option.value = i
+  //     option.innerHTML = i
+  //     years.append(option)
+  //   }
+  // }
 
 
