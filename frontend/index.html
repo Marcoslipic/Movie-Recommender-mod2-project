@@ -18,11 +18,33 @@
       <form class=>
         <fieldset class="form group">
         <label for="searchTerm">Search</label>
-          <input type="text" class="form-control" id="searchTerm" 
-          placeholder="Enter Movie Here" style="margin-left: 25%">          
+          <!-- <input type="text" class="form-control" id="searchTerm" 
+          placeholder="Enter Movie Here" style="margin-left: 25%">    -->
+          <select name="searchTerm" id="searchTerms" style="margin-left: 37%">
+          </select>       
         </fieldset>
         <fieldset>
-        <select name="genres" id="genreDrop" style="margin-left: 25%"></select>
+          <select name="genres" id="searchTerm" style="margin-left: 25%">
+            <option value="Action">Action</option>
+            <option value="Drama">Drama</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="History">History</option>
+            <option value="Horror">Horror</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Family">Family</option>
+            <option value="Music">Music</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="TV Movie">TV Movie</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+            <option value="Western">Thriller</option>
+        </select>
         <select name="year" id="yearDrop"></select>
       </fieldset>
         <button type="submit" class="btn btn-primary">Give Me Ideas</button>
@@ -32,9 +54,9 @@
           
         </section>
         <section class="mt-2 col-3 row">
-          <h3>Watch Later</h3>
+          <h3 style='margin-left: 7rem;'>Watch Later</h3>
           <section id="watch-later">
-            <small>You have no movies queued up.</small>
+            <!-- <small style="margin-left: 6rem;">You have no movies queued up.</small> -->
           </section>
         </section>
       </section>

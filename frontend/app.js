@@ -8,6 +8,7 @@ const baseURL = `https://api.themoviedb.org/3/discover/movie?${apikey}`
 const imgURL = `https://image.tmdb.org/t/p/w500`
 let genreInput = "&with_genres="
 let searchURL = ""
+let yearInput = "&year="
 
 form.addEventListener('submit', formSubmitted)
 
@@ -23,8 +24,9 @@ function getName(result){
   const searchGenre = result.find(genre => {
     return genre.name === input.value
   })
+  yearInput = `${yearInput}${input.value}`
   genreInput = `${genreInput}${searchGenre.id}`
-  searchURL = baseURL + genreInput
+  searchURL = baseURL + yearInput + genreInput
   getMovie()
 }
 
@@ -48,7 +50,7 @@ function getName(result){
     const watchLaterButton = document.querySelector('.watch-later-button');
     watchLaterButton.addEventListener('click', (event) => {
       const { id } = watchLaterButton.dataset;
-      watchLaterSection.innerHTML = watchLaterSection.innerHTML +  `<div class="card">
+      watchLaterSection.innerHTML = watchLaterSection.innerHTML +  `<div class="card" style='margin-left: 2.5rem;'>
       <img src="${imgURL}${randomRes["poster_path"]}" class="card-img-top" alt="${randomRes["title"]}">
     </div>`
     })
