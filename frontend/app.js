@@ -1,18 +1,19 @@
 const form = document.querySelector('form')
 const genre = document.getElementsByName('genres')
 const year = document.getElementsByName('year')
-let genreInput = document.querySelector('#genre')
-const yearInput = document.querySelector('#yearDrop')
-const keywordInput = document.querySelector('#keyword')
+const genreSelector = document.querySelector('#genre')
+const yearSelector = document.querySelector('#yearDrop')
+const keywordSelector = document.querySelector('#keyword')
 const resultsSection = document.querySelector('#results')
 const watchLaterSection = document.querySelector('#watch-later')
 const apikey = "api_key=e6c80bcc6c22dfddc5cc43795406ed56"
-const genreURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=e6c80bcc6c22dfddc5cc43795406ed56&language=en-US"
+const keywordURL = `https://api.themoviedb.org/3/search/keyword?${apikey}&query=`
 const baseURL = `https://api.themoviedb.org/3/discover/movie?${apikey}`
 const imgURL = `https://image.tmdb.org/t/p/w500`
 let genreInput = "&with_genres="
 let yearInput = "&primary_release_year="
 let keyInput = "&with_keywords="
+let keyID = ''
 
 form.addEventListener('submit', formSubmitted)
 
@@ -30,16 +31,18 @@ form.addEventListener('submit', formSubmitted)
 
 function formSubmitted(event){
   event.preventDefault()
-  console.log(genreInput.value);
-  // console.log(event)
-  searchURL = baseURL + `${genre_Input}${genreInput.value}${year_Input}${yearInput.value}${keyword_Input}${keywordInput.value}`
-  console.log(searchURL);
-  getMovie()
-
+  let formData = new FormData(form)
+  let keywordInputValue = formData.get("keyword")
+  fetch(`${keywordURL}${keywordInputValue}`)
+    .then(response => response.json())
+    .then(data => {
+      setKeyId(data.results)
+      getMovie()
+    })
     // fetch(genreURL)
     //   .then(response => response.json())
     //   .then(data => getName(data["genres"])) 
-}
+} 
 
 // function getName(result){
 //   console.log(genreInput.value);
@@ -69,7 +72,7 @@ function formSubmitted(event){
           </form>
           <button data-id="${randomRes['title']} type="button" class="btn btn-danger watch-later-button"
           style="margin-left: 41.3%">Watch Later</button>
-        </div>
+        </div>t
       </div>
     `
     const watchLaterButton = document.querySelector('.watch-later-button');
@@ -87,6 +90,15 @@ function formSubmitted(event){
       .then(data => renderInfo(data["results"]))
   }
 
+  function setKeyId(data){
+    data.forEach(entry => {
+      keyID = entry.id+"%20"
+      
+      keyInput = `${keyInput}${keyID}`
+      searchURL = baseURL + `${yearInput}${yearSelector.value}${genreInput}${genreSelector.value}${keyInput}`
+    })
+  }
+  
   // function getYears(){
   //   var years = document.getElementById('yearDrop')
   //   for (var i = 2020; i >= 1913; i--){
