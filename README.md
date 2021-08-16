@@ -4,6 +4,7 @@ by William Neal and Marcos Lipic
 
 &Chill is a simple web app that allows a user to search TheMovieDatabase API and it's archive of thousands upon thousands of movies to help get ideas for a movie night! Featuring a Ruby on Rails backend and Vanilla Javascript frontend, the application allows a user to search by several parameters to find a movie that suits their mood. 
 
+=======
 # Using the Application
 
 To get started using &Chill movie search first visit, https://github.com/Jawnny5/Movie-Recommender-mod2-project, 
@@ -32,4 +33,5 @@ In addition to firing off the initial search request, the "Give Me Ideas" button
 
 # Watch Later
 If a user clicks the "Watch Later" button on a returned movie that movie is then added to a right side panel of the UI for the user to reference later after going through all of the matching results.
+
 
